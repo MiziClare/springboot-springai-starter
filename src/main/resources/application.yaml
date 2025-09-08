@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: heima-ai
+  ai:
+    deepseek:
+      api-key: sk-9664da3a637a4239ada605eb9c145dd3
+      api-base-url: https://api.deepseek.com
+      timeout: 30s
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0.8
