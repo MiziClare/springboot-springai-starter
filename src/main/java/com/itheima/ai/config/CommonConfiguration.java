@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 public class CommonConfiguration {
 
-    // 配置客户端
+    // Configure client
     @Bean
     public ChatClient chatClient(DeepSeekChatModel model) {
         return ChatClient
