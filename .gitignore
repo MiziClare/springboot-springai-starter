@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+### Vue ###
+node_modules/
+
 ### Others ###
 *.class
 *.log
