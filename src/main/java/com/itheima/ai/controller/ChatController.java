@@ -1,5 +1,4 @@
 package com.itheima.ai.controller;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.RequestMapping;
