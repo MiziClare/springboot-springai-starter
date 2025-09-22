@@ -17,7 +17,8 @@ public class ChatController {
 
     @RequestMapping(value = "/chat", produces = "text/html;charset=UTF-8")
     public Flux<String> chat(String prompt, String chatId) {
-        // 1.保存 chatId 到会话历史中
+
+        // 1.保存前端发来的 chatId 到会话历史 chatHistoryRepository 中
         chatHistoryRepository.save("chat", chatId);
 
         // 2. 构造请求模型，发送请求
