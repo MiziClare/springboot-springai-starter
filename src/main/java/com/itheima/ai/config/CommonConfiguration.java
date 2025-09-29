@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 public class CommonConfiguration {
 
-    // 添加会话记忆：SpringAi已经实现了会话记忆存储的对象，创建object后交给下方的环绕增强MessageChatMemoryAdvisor即可实现会话消息记忆。
+    // 添加会话记忆：SpringAi已经实现了会话记忆存储的对象，创建 ChatMemory 实例后交给下方的环绕增强MessageChatMemoryAdvisor即可实现会话消息记忆。
     // 但是SpringAi提供的ChatMemory无查询会话消息历史功能。
     // 不过ChatMemory接口提供了根据ID查会话消息历史的方法即get(chatId)，可以取出某个会话（chatId）里的全部消息。
     @Bean
@@ -21,7 +21,7 @@ public class CommonConfiguration {
                 .build();
     }
 
-    // Configure client for general chat
+    // 1. Configure client for general chat
     @Bean
     public ChatClient chatClient(OpenAiChatModel model, ChatMemory chatMemory) {
         return ChatClient
@@ -34,7 +34,7 @@ public class CommonConfiguration {
                 .build(); // 构建 ChatClient 实例
     }
 
-    // 纯 Prompt 模式的聊天游戏
+    // 2. 纯 Prompt 模式的聊天游戏
     @Bean
     public ChatClient gameChatClient(OpenAiChatModel model, ChatMemory chatMemory) {
         return ChatClient

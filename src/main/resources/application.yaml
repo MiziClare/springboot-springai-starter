@@ -9,6 +9,11 @@ spring:
         options:
           model: deepseek-chat
           temperature: 0.8
+  datasource:
+    url: jdbc:mysql://localhost:3309/heima_springai?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: Zxy@5628610
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:
   level:
