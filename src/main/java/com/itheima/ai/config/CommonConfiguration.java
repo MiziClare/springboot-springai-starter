@@ -49,7 +49,7 @@ public class CommonConfiguration {
                 .build(); // 构建 ChatClient 实例
     }
 
-    // 3. 帮助用户预定机构课程的智能客服
+    // 3. Agent + Function Calling: 帮助用户预定机构课程的智能客服
     @Bean
     public ChatClient serviceChatClient(OpenAiChatModel model, ChatMemory chatMemory, CourseTools courseTools) {
         return ChatClient

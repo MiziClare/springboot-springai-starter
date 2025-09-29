@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author Xiaoyi
  * @since 2025-09-29
  */
-@Mapper
 public interface CourseReservationMapper extends BaseMapper<CourseReservation> {
 
 }

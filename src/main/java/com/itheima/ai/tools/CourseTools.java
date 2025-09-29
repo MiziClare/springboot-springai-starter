@@ -19,7 +19,7 @@ import java.util.List;
 @Component
 public class CourseTools {
 
-    // 准备使用 Mybatis Plus 提供的 Service 来操作数据库
+    // 准备使用 Mybatis Plus 提供的 ServiceImpl 来操作数据库
     private final ICourseService courseService;
     private final ISchoolService schoolService;
     private final ICourseReservationService courseReservationService;
