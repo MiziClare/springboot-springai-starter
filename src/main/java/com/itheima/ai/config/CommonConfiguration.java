@@ -1,10 +1,12 @@
 package com.itheima.ai.config;
 import com.itheima.ai.constants.SystemConstants;
+import com.itheima.ai.tools.CourseTools;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +23,7 @@ public class CommonConfiguration {
                 .build();
     }
 
-    // 1. Configure client for general chat
+    // 1. 基础聊天机器人 Configure client for general chat
     @Bean
     public ChatClient chatClient(OpenAiChatModel model, ChatMemory chatMemory) {
         return ChatClient
@@ -44,6 +46,20 @@ public class CommonConfiguration {
                         new SimpleLoggerAdvisor(),
                         MessageChatMemoryAdvisor.builder(chatMemory).build() // MessageChatMemoryAdvisor 的构造方法是 private，只能通过 builder(...) 来生成实例。用来拦截我们与ai的对话。
                 ) // 配置日志 Advisor
+                .build(); // 构建 ChatClient 实例
+    }
+
+    // 3. 帮助用户预定机构课程的智能客服
+    @Bean
+    public ChatClient serviceChatClient(OpenAiChatModel model, ChatMemory chatMemory, CourseTools courseTools) {
+        return ChatClient
+                .builder(model) // 创建 ChatClient 工厂实例
+                .defaultSystem(SystemConstants.CUSTOMER_SERVICE_PROMPT)
+                .defaultAdvisors(
+                        new SimpleLoggerAdvisor(),
+                        MessageChatMemoryAdvisor.builder(chatMemory).build() // MessageChatMemoryAdvisor 的构造方法是 private，只能通过 builder(...) 来生成实例。用来拦截我们与ai的对话。
+                ) // 配置日志 Advisor
+                .defaultTools(courseTools) // 配置工具类
                 .build(); // 构建 ChatClient 实例
     }
 }
