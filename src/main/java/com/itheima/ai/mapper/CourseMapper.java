@@ -2,6 +2,7 @@ package com.itheima.ai.mapper;
 
 import com.itheima.ai.entity.po.Course;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Xiaoyi
  * @since 2025-09-29
  */
+@Mapper
 public interface CourseMapper extends BaseMapper<Course> {
 
 }
